@@ -1,2 +1,2 @@
-# Eat
+# Bite
 Eat, see, repeat
