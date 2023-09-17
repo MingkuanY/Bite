@@ -3,7 +3,6 @@ from markupsafe import escape
 from flask import render_template
 from flask import request, make_response, jsonify
 import json
-import requests
 
 
 app = Flask(__name__)

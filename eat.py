@@ -7,7 +7,8 @@ import RPi.GPIO as GPIO
 import smbus
 from time import sleep
 import numpy as np
-import json
+from flask import json, jsonify
+import openai
 
 
 #json_file has all jsons and aggregate (send all to frontend every time)
@@ -482,6 +483,27 @@ while True:
 
         parsed_meal = parse_json(current_meal) #updates json_file.jsonl
         update_aggregate(parsed_meal) #updates aggregate_file.json
+        
+        
+        def chatgpt_feedback(): #to webserver
+            with open('aggregate_file.json', 'r') as file1, open('json_file.jsonl', 'r') as file2:
+                agg = json.parse(file1.read())
+                meals = [json.parse(meal) for meal in file2.readlines()]
+        
+            user_data = jsonify({"agg": agg, "meals": meals})
+            
+            #chatGPT api
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages= [{"role": "system", #dictionary
+                           "content": "The following data is formatted such that the first json is the aggregate of all of my meals and the second json contains lines that describe individual meals that compose the aggregate. Using this data, could you give me some advice on how to improve my diet? "
+                           + "\n" + user_data}]
+            )
+            
+            return response['choices'][0]['message']['content'] #from chatgpt website
+        
+        
+
         
 
     prev_trigger = trigger
