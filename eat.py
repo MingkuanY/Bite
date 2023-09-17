@@ -9,6 +9,7 @@ from time import sleep
 import numpy as np
 import json
 
+
 #json_file has all jsons and aggregate (send all to frontend every time)
 
 all_jsons = {}
@@ -128,13 +129,13 @@ def parse_json(json_dict):
         }
     }
     
-    with open('json_file.jsonl', 'a') as file:
-        file.write(parsed_data + "\n", file, indent=4)
+    with open('json_parsing/json_file.jsonl', 'a') as file:
+        file.write(json.dumps(parsed_data).replace("\n",'') + "\n")
     
     return parsed_data
 
 def update_aggregate(json_dict): #adds the given json_dict to the aggregate values
-    with open('dump_file.json', 'r') as file:
+    with open('json_parsing/aggregate_file.json', 'r') as file:
         aggregate_dict = json.load(file)
     
     #adds dump file and preexisting aggregate file vals together
@@ -219,7 +220,7 @@ def update_aggregate(json_dict): #adds the given json_dict to the aggregate valu
         }
     }
     
-    with open('aggregate_file.json', 'w') as file:
+    with open('json_parsing/aggregate_file.json', 'w') as file:
         json.dump(aggregate_data, file, indent=4)
     
     return aggregate_data

@@ -15,27 +15,25 @@ GYRO_XOUT_H  = 0x43
 GYRO_YOUT_H  = 0x45
 GYRO_ZOUT_H  = 0x47
 
+# Function to initialize MPU6050
 def MPU_Init():
-    # Initialize MPU6050
     bus.write_byte_data(Device_Address, SMPLRT_DIV, 7)
     bus.write_byte_data(Device_Address, PWR_MGMT_1, 1)
     bus.write_byte_data(Device_Address, CONFIG, 0)
     bus.write_byte_data(Device_Address, GYRO_CONFIG, 24)
     bus.write_byte_data(Device_Address, INT_ENABLE, 1)
 
+# Function to read 16-bit raw data from the MPU6050
 def read_raw_data(addr):
-    # Read 16-bit raw data from the MPU6050
     high = bus.read_byte_data(Device_Address, addr)
     low = bus.read_byte_data(Device_Address, addr+1)
-    
-    # Concatenate higher and lower value and convert to signed value
     value = ((high << 8) | low)
     if value > 32768:
         value = value - 65536
     return value
 
 # Initialize I2C bus and MPU6050 device address
-bus = smbus.SMBus(1)  # Use bus 1, you can also use bus 0 for older boards
+bus = smbus.SMBus(1)  # Use bus 1; change to 0 for older boards
 Device_Address = 0x68  # MPU6050 device address
 
 # Initialize MPU6050
@@ -51,9 +49,9 @@ raw_accel_data = []
 ma_filter_25 = []
 ma_filter_5 = []
 
-last_print_time = None
-current_time = 0  # Initialize current_time to zero
-MPU_IS_UPRIGHT = False  # Initialize the upright flag
+# Initialize state variables
+state = 0
+timestamp = 0
 
 # Initialize variables for calculating the average derivative
 derivative_buffer = []
@@ -92,9 +90,6 @@ while True:
 
     diff = ma_filter_25[-1] - ma_filter_5[-1]
 
-    state = 0
-    timestamp = 0  # Initialize timestamp
-    
     # Calculate the derivative of acceleration and add it to the buffer
     if len(raw_accel_data) > 1:
         acceleration_derivative = A - raw_accel_data[-2]
@@ -103,34 +98,40 @@ while True:
     # Keep the derivative buffer length to 10 samples
     if len(derivative_buffer) > 10:
         derivative_buffer.pop(0)
+        # Calculate the average derivative over the last 10 samples
+        avg_derivative = np.mean(derivative_buffer)
 
-    # Calculate the average derivative over the last 10 samples
-    avg_derivative = np.mean(derivative_buffer)
-    
-    print(Ax, Ay, Az)
-    # State Machine
-    if state == 0: # waiting for hand to be still and perpendicular
-        print("STATE 0")
-        if (abs(Ax) <= 0.2 and abs(Ay) <= 0.2 and abs(Az) <= 0.2 and avg_derivative < threshold_avg_derivative):
-            if timestamp == 0:
-                timestamp = time()
-            elif time() - timestamp > 1 and avg_derivative < threshold_avg_derivative:
-                state = 1
+    if len(derivative_buffer) == 10:
+        # State Machine
+        if state == 0:  # Waiting for hand to be still and perpendicular
+            if (abs(Ax) - 1 <= 0.2 and abs(Ay) <= 0.2 and abs(Az) <= 0.2 and avg_derivative < threshold_avg_derivative):
+                if timestamp == 0:
+                    print("STATE 0.1")
+                    timestamp = time()
+                elif time() - timestamp > 1 and avg_derivative < threshold_avg_derivative:
+                    print("STATE 0.2")
+                    state = 1
+                    timestamp = time()
+                else:
+                    print("STATE 0.3")
+                    timestamp = time()
             else:
-                timestamp = time()
-        else:
-            timestamp = 0
-    elif state == 1: # hand is still and perpendicular, waiting to be turned 90 degrees flat
-        print("STATE 1")
-        if (time() - timestamp < 2 and abs(Ax) <= 0.2 and abs(Ay) <= 0.2 and abs(Az) <= 0.2 and avg_derivative < threshold_avg_derivative):
-            state = 2
-        else:
+                print("STATE 0.4")
+                timestamp = 0
+                print(Ax, Ay, Az)
+        elif state == 1:  # Hand is still and perpendicular, waiting to be turned 90 degrees flat
+            print("STATE 1.0")
+            if (time() - timestamp < 2 and abs(Ax) <= 0.2 and abs(Ay) <= 0.2 and abs(Az) - 1 <= 0.2 and avg_derivative < threshold_avg_derivative):
+                print("STATE 1.1")
+                state = 2
+            else:
+                print("STATE 1.2")
+                state = 0
+                timestamp = 0
+        elif state == 2:
+            print("STATE 2: Taking a photo!")
+            # Add your code here to trigger the photo capture
+            sleep(1)  # Sleep for 1 second
             state = 0
-    elif state == 2:
-        print("STATE 2: Taking a photo!")
-        # Add your code here to trigger the photo capture
-        state = 0
-    else:
-        MPU_IS_UPRIGHT = False
 
-    sleep(0.04)  # Sleep for a short interval before the next reading
+        sleep(0.04)  # Sleep for a short interval before the next reading
