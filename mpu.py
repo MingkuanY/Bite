@@ -116,6 +116,8 @@ while True:
                 timestamp = time()
             elif time() - timestamp > 1 and avg_derivative < threshold_avg_derivative:
                 state = 1
+            else:
+                timestamp = time()
         else:
             timestamp = 0
     elif state == 1: # hand is still and perpendicular, waiting to be turned 90 degrees flat
