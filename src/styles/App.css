@@ -57,7 +57,7 @@ body {
   min-width: 500px;
   overflow: hidden;
   background-color: rgba(var(--quaternary-color), 1);
-  position: relative;
+  /* position: relative; */
   margin: 150px 20px 0;
   display: flex;
   min-height: 400px;
@@ -72,11 +72,12 @@ body {
 }
 
 .nutrition {
-  position: absolute;
-  right: 0;
+  /* position: absolute; */
+  /* right: 0;
   top: 0;
-  bottom: 0;
-  height: 100%;
+  bottom: 0; */
+  margin: 150px 20px 0;
+  flex: 1;
 }
 
 .dashboard-top {
@@ -152,11 +153,17 @@ body {
 
 .chatbot {
   flex: 1;
-  height: 60vh;
+  height: 63vh;
   padding: 10px 20px 30px;
   margin: 150px 20px;
   background-color: rgb(var(--quinary-color));
   border-radius: 5px;
+  overflow: hidden;
+}
+
+.chatbot-text {
+  margin-top: 20px;
+  font-style: italic;
 }
 
 
@@ -173,7 +180,7 @@ body {
 
 
 /* navbar styles */
-navbar {
+.navbar {
   position: fixed;
   left: 0;
   right: 0;
@@ -327,7 +334,7 @@ button {
   background-color: rgb(var(--primary-color));
   color: black;
   border: 1px solid black;
-  border-top-right-radius: 5px;
+  /* border-top-right-radius: 5px; */
   float: left;
   width: 280px;
   padding: 0.5rem;
