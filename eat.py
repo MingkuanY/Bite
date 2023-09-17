@@ -24,6 +24,7 @@ GYRO_ZOUT_H  = 0x47
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(15, GPIO.OUT)
 GPIO.output(15, False)
+# GPIO.input(14)
 
 def MPU_Init():
     # Initialize MPU6050
