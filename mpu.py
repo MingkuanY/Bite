@@ -114,7 +114,7 @@ while True:
                     timestamp = time()
                 else:
                     print("STATE 0.3")
-                    timestamp = time()
+                    timestamp = 0
             else:
                 print("STATE 0.4")
                 timestamp = 0
