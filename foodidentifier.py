@@ -1,5 +1,5 @@
 import requests
-img = 'C:\\Users\\Alex Kranias\\Bite\\images_test\\IMG_4904.JPG'
+img = 'images_test/image.jpg'
 api_user_token = '72858ab56101a40750278b25356e2ddf8adce260'
 headers = {'Authorization': 'Bearer ' + api_user_token}
 
