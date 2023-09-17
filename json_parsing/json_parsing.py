@@ -1,5 +1,9 @@
 import json
 
+#json_file has all jsons and aggregate (send all to frontend every time)
+
+all_jsons = {}
+
 # Define a function to round values to 2 decimal points
 def round_2(value):
     return round(value, 2)
@@ -25,10 +29,7 @@ dv_percentages = {
 }
 
 # Modify the parse_json function to include rounding and percent daily value
-def parse_json():
-    # Read JSON data from file
-    with open('json_file.json', 'r') as file:
-        json_dict = json.load(file)
+def parse_json(json_dict):
     
     #fix the first item dish name (remove duplicates, capitalize each word, turn list into one string)
     if len(list(set(json_dict['foodName']))) == 1:
@@ -118,93 +119,92 @@ def parse_json():
         }
     }
     
-    with open('dump_file.json', 'w') as file:
-        json.dump(parsed_data, file, indent=4)
+    with open('json_file.jsonl', 'a') as file:
+        file.write(parsed_data + "\n", file, indent=4)
     
     return parsed_data
 
-def update_aggregate(): #adds the given json_dict to the aggregate values
-    with open('dump_file.json', 'r') as file1, open('aggregate_file.json', 'r') as file2:
-        dump_dict = json.load(file1)
-        aggregate_dict = json.load(file2)
+def update_aggregate(json_dict): #adds the given json_dict to the aggregate values
+    with open('dump_file.json', 'r') as file:
+        aggregate_dict = json.load(file)
     
     #adds dump file and preexisting aggregate file vals together
     aggregate_data = {
-        'Food Name': aggregate_dict['Food Name'] + [dump_dict['Food Name']],
+        'Food Name': aggregate_dict['Food Name'] + [json_dict['Food Name']],
         'Nutritional Info': {
             'Calories': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Calories']['quantity'] + aggregate_dict['Nutritional Info']['Calories']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Calories']['quantity'] + aggregate_dict['Nutritional Info']['Calories']['quantity']),
                 'unit': 'kcal',
-                'percent_daily_value': (round_2((dump_dict['Nutritional Info']['Calories']['quantity'] + aggregate_dict['Nutritional Info']['Calories']['quantity']) / dv_percentages['calories']) * 100)
+                'percent_daily_value': (round_2((json_dict['Nutritional Info']['Calories']['quantity'] + aggregate_dict['Nutritional Info']['Calories']['quantity']) / dv_percentages['calories']) * 100)
             },
             'Total Fat': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Total Fat']['quantity'] + aggregate_dict['Nutritional Info']['Total Fat']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Total Fat']['quantity'] + aggregate_dict['Nutritional Info']['Total Fat']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((dump_dict['Nutritional Info']['Total Fat']['quantity'] + aggregate_dict['Nutritional Info']['Total Fat']['quantity']) / dv_percentages['Total fat (g)']) * 100)
+                'percent_daily_value': round_2(((json_dict['Nutritional Info']['Total Fat']['quantity'] + aggregate_dict['Nutritional Info']['Total Fat']['quantity']) / dv_percentages['Total fat (g)']) * 100)
             },
             'Saturated Fat': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Saturated Fat']['quantity'] + aggregate_dict['Nutritional Info']['Saturated Fat']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Saturated Fat']['quantity'] + aggregate_dict['Nutritional Info']['Saturated Fat']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((dump_dict['Nutritional Info']['Saturated Fat']['quantity'] + aggregate_dict['Nutritional Info']['Saturated Fat']['quantity']) / dv_percentages['saturated fat (g)']) * 100)
+                'percent_daily_value': round_2(((json_dict['Nutritional Info']['Saturated Fat']['quantity'] + aggregate_dict['Nutritional Info']['Saturated Fat']['quantity']) / dv_percentages['saturated fat (g)']) * 100)
             },
             'Trans Fat': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Trans Fat']['quantity'] + aggregate_dict['Nutritional Info']['Trans Fat']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Trans Fat']['quantity'] + aggregate_dict['Nutritional Info']['Trans Fat']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Trans Fat']['quantity'] + aggregate_dict['Nutritional Info']['Trans Fat']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Trans Fat']['quantity'] + aggregate_dict['Nutritional Info']['Trans Fat']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Cholesterol': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Cholesterol']['quantity'] + aggregate_dict['Nutritional Info']['Cholesterol']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Cholesterol']['quantity'] + aggregate_dict['Nutritional Info']['Cholesterol']['quantity']),
                 'unit': 'mg',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Cholesterol']['quantity'] + aggregate_dict['Nutritional Info']['Cholesterol']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Cholesterol']['quantity'] + aggregate_dict['Nutritional Info']['Cholesterol']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Sodium': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Sodium']['quantity'] + aggregate_dict['Nutritional Info']['Sodium']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Sodium']['quantity'] + aggregate_dict['Nutritional Info']['Sodium']['quantity']),
                 'unit': 'mg',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Sodium']['quantity'] + aggregate_dict['Nutritional Info']['Sodium']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Sodium']['quantity'] + aggregate_dict['Nutritional Info']['Sodium']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Potassium': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Potassium']['quantity'] + aggregate_dict['Nutritional Info']['Potassium']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Potassium']['quantity'] + aggregate_dict['Nutritional Info']['Potassium']['quantity']),
                 'unit': 'mg',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Potassium']['quantity'] + aggregate_dict['Nutritional Info']['Potassium']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Potassium']['quantity'] + aggregate_dict['Nutritional Info']['Potassium']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Total Carbs': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Total Carbs']['quantity'] + aggregate_dict['Nutritional Info']['Total Carbs']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Total Carbs']['quantity'] + aggregate_dict['Nutritional Info']['Total Carbs']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Total Carbs']['quantity'] + aggregate_dict['Nutritional Info']['Total Carbs']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Total Carbs']['quantity'] + aggregate_dict['Nutritional Info']['Total Carbs']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Dietary Fiber': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Dietary Fiber']['quantity'] + aggregate_dict['Nutritional Info']['Dietary Fiber']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Dietary Fiber']['quantity'] + aggregate_dict['Nutritional Info']['Dietary Fiber']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Dietary Fiber']['quantity'] + aggregate_dict['Nutritional Info']['Dietary Fiber']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Dietary Fiber']['quantity'] + aggregate_dict['Nutritional Info']['Dietary Fiber']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Sugars': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Sugars']['quantity'] + aggregate_dict['Nutritional Info']['Sugars']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Sugars']['quantity'] + aggregate_dict['Nutritional Info']['Sugars']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Sugars']['quantity'] + aggregate_dict['Nutritional Info']['Sugars']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Sugars']['quantity'] + aggregate_dict['Nutritional Info']['Sugars']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Protein': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Protein']['quantity'] + aggregate_dict['Nutritional Info']['Protein']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Protein']['quantity'] + aggregate_dict['Nutritional Info']['Protein']['quantity']),
                 'unit': 'g',
-                'percent_daily_value': round_2(((round_2(dump_dict['Nutritional Info']['Protein']['quantity'] + aggregate_dict['Nutritional Info']['Protein']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
+                'percent_daily_value': round_2(((round_2(json_dict['Nutritional Info']['Protein']['quantity'] + aggregate_dict['Nutritional Info']['Protein']['quantity'])) / dv_percentages['trans fat (g)']) * 100)
             },
             'Vitamin A': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Vitamin A']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin A']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Vitamin A']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin A']['quantity']),
                 'unit': '%'
             },
             'Vitamin C': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Vitamin C']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin C']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Vitamin C']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin C']['quantity']),
                 'unit': '%'
             },
             'Vitamin D': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Vitamin D']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin D']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Vitamin D']['quantity'] + aggregate_dict['Nutritional Info']['Vitamin D']['quantity']),
                 'unit': '%'
             },
             'Calcium': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Calcium']['quantity'] + aggregate_dict['Nutritional Info']['Calcium']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Calcium']['quantity'] + aggregate_dict['Nutritional Info']['Calcium']['quantity']),
                 'unit': '%'
             },
             'Iron': {
-                'quantity': round_2(dump_dict['Nutritional Info']['Iron']['quantity'] + aggregate_dict['Nutritional Info']['Iron']['quantity']),
+                'quantity': round_2(json_dict['Nutritional Info']['Iron']['quantity'] + aggregate_dict['Nutritional Info']['Iron']['quantity']),
                 'unit': '%'
             },
         }
@@ -216,11 +216,7 @@ def update_aggregate(): #adds the given json_dict to the aggregate values
     return aggregate_data
 
 
-def clear_aggregate(): #clears aggregate, food names list cleared and all values set to 0
-    with open('dump_file.json', 'r') as file:
-        dump_dict = json.load(file)
-    
-    #adds dump file and preexisting aggregate file vals together
+def clear_aggregate(): #clears aggregate, food names list cleared and all values set to 0    
     aggregate_data = {
         'Food Name': [],
         'Nutritional Info': {
