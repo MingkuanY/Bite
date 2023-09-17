@@ -3,13 +3,15 @@ from markupsafe import escape
 from flask import render_template
 from flask import request, make_response, jsonify
 import json
-import openai
+import openai, os
 
 
 app = Flask(__name__)
 burned_cal = 0
 
 def chatgpt_feedback(): #to webserver
+    openai.api_key = "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"
+
     with open('aggregate_file.json', 'r') as file1, open('json_file.jsonl', 'r') as file2:
         agg = json.parse(file1.read())
         meals = [json.parse(meal) for meal in file2.readlines()]
@@ -17,14 +19,12 @@ def chatgpt_feedback(): #to webserver
     user_data = jsonify({"agg": agg, "meals": meals})
     
     #chatGPT api
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages= [{"role": "system", #dictionary
-                    "content": "The following data is formatted such that the first json is the aggregate of all of my meals and the second json contains lines that describe individual meals that compose the aggregate. Using this data, could you give me some advice on how to improve my diet? "
-                    + "\n" + user_data}]
-    )
-    
-    return response['choices'][0]['message']['content'] #from chatgpt website
+    prompt = "The following data is formatted such that the first json is the aggregate of all of my meals and the second json contains lines that describe individual meals that compose the aggregate. Using this data, could you give me some advice on how to improve my diet? " + "\n" + user_data
+    model = "gpt-3.5-turbo"
+    response = openai.Completion.create(engine=model, prompt=prompt, max_tokens=50)
+
+    generated_text = response.choices[0].text
+    return generated_text
 
 
 @app.route('/terra', methods=['POST'])
