@@ -1,0 +1,16 @@
+:root {
+  --primary-color: #233134;
+  --secondary-color: #1b4f7d;
+  --tertiary-color: #e7704b;
+  --quaternary-color: #97ce9a;
+  --quintary-color: #2b9bc9;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primary-color);
+  height: 100%;
+  width: 100%;
+}
