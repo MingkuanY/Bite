@@ -1,0 +1,79 @@
+{
+    "Food Name": [],
+    "Nutritional Info": {
+        "Calories": {
+            "quantity": 0,
+            "unit": "kcal",
+            "percent_daily_value": 0
+        },
+        "Total Fat": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Saturated Fat": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Trans Fat": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Cholesterol": {
+            "quantity": 0,
+            "unit": "mg",
+            "percent_daily_value": 0
+        },
+        "Sodium": {
+            "quantity": 0,
+            "unit": "mg",
+            "percent_daily_value": 0
+        },
+        "Potassium": {
+            "quantity": 0,
+            "percent_daily_value": 0
+        },
+        "Total Carbs": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Dietary Fiber": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Sugars": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Protein": {
+            "quantity": 0,
+            "unit": "g",
+            "percent_daily_value": 0
+        },
+        "Vitamin A": {
+            "quantity": 0,
+            "unit": "%"
+        },
+        "Vitamin C": {
+            "quantity": 0,
+            "unit": "%"
+        },
+        "Vitamin D": {
+            "quantity": 0,
+            "unit": "%"
+        },
+        "Calcium": {
+            "quantity": 0,
+            "unit": "%"
+        },
+        "Iron": {
+            "quantity": 0,
+            "unit": "%"
+        }
+    }
+}
