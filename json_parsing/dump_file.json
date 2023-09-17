@@ -1,0 +1,80 @@
+{
+    "Food Name": "Test",
+    "Nutritional Info": {
+        "Calories": {
+            "quantity": 481.66,
+            "unit": "kcal",
+            "percent_daily_value": 24.08
+        },
+        "Total Fat": {
+            "quantity": 25.99,
+            "unit": "g",
+            "percent_daily_value": 37.13
+        },
+        "Saturated Fat": {
+            "quantity": 15.97,
+            "unit": "g",
+            "percent_daily_value": 79.83
+        },
+        "Trans Fat": {
+            "quantity": 1.0,
+            "unit": "g",
+            "percent_daily_value": 50.11
+        },
+        "Cholesterol": {
+            "quantity": 90.13,
+            "unit": "mg",
+            "percent_daily_value": 30.04
+        },
+        "Sodium": {
+            "quantity": 209.78,
+            "unit": "mg",
+            "percent_daily_value": 9.12
+        },
+        "Potassium": {
+            "quantity": 75.14,
+            "unit": "mg",
+            "percent_daily_value": 2.15
+        },
+        "Total Carbs": {
+            "quantity": 58.97,
+            "unit": "g",
+            "percent_daily_value": 19.66
+        },
+        "Dietary Fiber": {
+            "quantity": 1.47,
+            "unit": "g",
+            "percent_daily_value": 5.89
+        },
+        "Sugars": {
+            "quantity": 30.12,
+            "unit": "g",
+            "percent_daily_value": 60.24
+        },
+        "Protein": {
+            "quantity": 4.78,
+            "unit": "g",
+            "percent_daily_value": 9.55
+        },
+        "Vitamin A": {
+            "quantity": 220.26,
+            "unit": "%"
+        },
+        "Vitamin C": {
+            "quantity": 0.0,
+            "unit": "%"
+        },
+        "Vitamin D": {
+            "quantity": 0.13,
+            "unit": "%"
+        },
+        "Calcium": {
+            "quantity": 16.1,
+            "unit": "%"
+        },
+        "Iron": {
+            "quantity": 1.77,
+            "unit": "%"
+        }
+    }
+}
