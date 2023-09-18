@@ -5,7 +5,7 @@ from PIL import Image
 import time
 import RPi.GPIO as GPIO
 import smbus
-from time import sleep
+from time import sleep, time
 import numpy as np
 from flask import json, jsonify
 import openai
@@ -18,6 +18,8 @@ all_jsons = {}
 # Define a function to round values to 2 decimal points
 def round_2(value):
     return round(value, 2)
+
+    
 
 # Define a dictionary with default percent daily values for each nutrient
 dv_percentages = {
@@ -330,6 +332,35 @@ GYRO_ZOUT_H  = 0x47
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(15, GPIO.OUT)
 GPIO.output(15, False)
+
+# GPIO ports for the 7seg pins
+segments =  (11,4,23,8,7,10,18,25)
+# 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
+ 
+for segment in segments:
+    GPIO.setup(segment, GPIO.OUT)
+    GPIO.output(segment, 0)
+ 
+# GPIO ports for the digit 0-3 pins 
+digits = (22,27,17,24)
+# 7seg_digit_pins (12,9,8,6) digits 0-3 respectively
+ 
+for digit in digits:
+    GPIO.setup(digit, GPIO.OUT)
+    GPIO.output(digit, 1)
+ 
+num = {' ':(0,0,0,0,0,0,0),
+    '0':(1,1,1,1,1,1,0),
+    '1':(0,1,1,0,0,0,0),
+    '2':(1,1,0,1,1,0,1),
+    '3':(1,1,1,1,0,0,1),
+    '4':(0,1,1,0,0,1,1),
+    '5':(1,0,1,1,0,1,1),
+    '6':(1,0,1,1,1,1,1),
+    '7':(1,1,1,0,0,0,0),
+    '8':(1,1,1,1,1,1,1),
+    '9':(1,1,1,1,0,1,1)}
+
 # GPIO.input(14)
 
 def MPU_Init():
@@ -342,13 +373,12 @@ def MPU_Init():
 
 def beep(repeat):
    for i in range(0, repeat):
-      for pulse in range(60): # square wave loop
+      for pulse in range(30): # square wave loop
          GPIO.output(15, True)
-         time.sleep(0.005)     # high for .001 sec
+         sleep(0.0015)     # high for .001 sec
          GPIO.output(15, False)      
-         time.sleep(0.005)     # low for .001 sec
-      time.sleep(0.02)        # add a pause between each cycle
-
+         sleep(0.0015)     # low for .001 sec
+      sleep(0.02)        # add a pause between each cycle
 
 def read_raw_data(addr):
     # Read 16-bit raw data from the MPU6050
@@ -382,7 +412,7 @@ last_print_time = None
 current_time = 0  # Initialize current_time to zero
 
 img = 'images_test/image.jpg'
-api_user_token = '6705bb3b9162a8b1826bbdce19d5d52fad669bf0'
+api_user_token = '78c882fae639ad72ba9e4e646aa26332277f37ab'
 headers = {'Authorization': 'Bearer ' + api_user_token}
 
 
@@ -390,9 +420,33 @@ camera = PiCamera()
 trigger = False
 prev_trigger = False
 
+# Define the threshold variable for average derivative
+threshold_avg_derivative = 0.1 # Change this threshold as needed
+avg_derivative = 0
+orientation_error = 0.4
+start_pos = [0.45, 0.97, 0.16]
+end_pos = [1.04, 0.32, 0.09]
+
+# Initialize a fixed-size buffer for raw acceleration data
+max_buffer_size = 25  # Adjust this as needed
+raw_accel_data = []
+
+# Initialize moving average filters for 'A' data
+ma_filter_25 = []
+ma_filter_5 = []
+
+# Initialize state variables
+state = 0
+timestamp = 0
+
+# Initialize variables for calculating the average derivative
+derivative_buffer = []
+
+
+beep(5)
 
 while True:
-    trigger = True
+    trigger = False
 
     # Read sensor data
     acc_x = read_raw_data(ACCEL_XOUT_H)
@@ -423,25 +477,60 @@ while True:
         ma_filter_5.append(0)  # Set to 0 if there are not enough data points
 
     diff = ma_filter_25[-1] - ma_filter_5[-1]
+
+    # Calculate the derivative of acceleration and add it to the buffer
+    if len(raw_accel_data) > 1:
+        acceleration_derivative = A - raw_accel_data[-2]
+        derivative_buffer.append(acceleration_derivative)
     
-    # Check if the MPU is upright with a maximum error of 5 degrees in every axis
-    # 
-    MPU_IS_UPRIGHT = False
+    # Keep the derivative buffer length to 10 samples
+    if len(derivative_buffer) > 10:
+        derivative_buffer.pop(0)
+        # Calculate the average derivative over the last 10 samples
+        avg_derivative = np.mean(derivative_buffer)
 
-    if (abs(Ax) <= 0.2 and abs(Ay) <= 0.2 and abs(Az - 1) <= 0.2):
-        if MPU_IS_UPRIGHT is False:
-            print("MPU IS UPRIGHT")
-            MPU_IS_UPRIGHT = True
+    if len(derivative_buffer) == 10:
+        # State Machine
+        if state == 0:  # Waiting for hand to be still and perpendicular
+            if ((Ax**2 - start_pos[0]**2) < orientation_error and (Ay**2 - start_pos[1]**2) < orientation_error and (Az**2 - start_pos[2]**2) < orientation_error and avg_derivative < threshold_avg_derivative):
+                if timestamp == 0:
+                    print("STATE 0.1")
+                    timestamp = time()
+                elif avg_derivative < threshold_avg_derivative:
+                    if time() - timestamp > 1:
+                        print("STATE 0.2")
+                        state = 1
+                        timestamp = time()
+                    else:
+                        print("STATE 0.3")
+            else:
+                print("STATE 0.4")
+                timestamp = 0
+                print(Ax, Ay, Az, avg_derivative)
+        elif state == 1:  # Hand is still and perpendicular, waiting to be turned 90 degrees flat
+            print("STATE 1.0")
+            #print(Ax, Ay, Az, avg_derivative)
+            if not ((Ax**2 - start_pos[0]**2) < orientation_error and (Ay**2 - start_pos[1]**2) < orientation_error and (Az**2 - start_pos[2]**2) < orientation_error):
+                state = 2
+                timestamp = time()
+        elif state == 2:  # Hand has started rotating, waiting to check if hand ends in correct position
+            print("STATE 2.0")
+            #print(Ax, Ay, Az, avg_derivative)
+            if time() - timestamp > 1.5: 
+                if ((Ax**2 - end_pos[0]**2) < orientation_error and (Ay**2 - end_pos[1]**2) < orientation_error and (Az**2 - end_pos[2]**2) < orientation_error and avg_derivative < threshold_avg_derivative):
+                    print("STATE 2.1")
+                    state = 3
+                else:
+                    print("STATE 2.2")
+                    state = 0
+                    timestamp = 0
+        elif state == 3: # Hand ended in correct position so picture is taken
+            print("STATE 3: Taking a photo!")
             trigger = True
-			
-        if (abs(diff) >= 0.09 and current_time == 0):
-            current_time = time.time()
-        elif (abs(diff) >= 0.09 and time.time() - current_time < 2):
-            last_print_time = time.time()
-        else:
-            current_time = 0
+            # Add your code here to trigger the photo capture
+            state = 0
 
-    sleep(0.04)  # Sleep for a short interval before the next reading
+        sleep(0.04)  # Sleep for a short interval before the next reading
 
     if trigger and not prev_trigger:
         beep(1)
@@ -483,9 +572,31 @@ while True:
 
         parsed_meal = parse_json(current_meal) #updates json_file.jsonl
         update_aggregate(parsed_meal) #updates aggregate_file.json
+
+        calories = int(parsed_meal["Nutritional Info"]["Calories"]["quantity"])
+        s = str(calories).rjust(4)
+        print(s)
+        for i in range(100):
+            for digit in range(4):
+                for loop in range(0,7):
+                    GPIO.output(segments[loop], num[s[digit]][loop])
+                    # if (int(time.ctime()[18:19])%2 == 0) and (digit == 1):
+                    #     GPIO.output(25, 1)
+                    # else:
+                    #     GPIO.output(25, 0)
+
+                for dig in range(len(digits)):
+                    if dig != digit:
+                        GPIO.output(digits[dig], 1)
+                GPIO.output(digits[digit], 0)
+                sleep(.01)
+                for dig in range(len(digits)):
+                    if dig != digit:
+                        GPIO.output(digits[dig], 1)
         
 
     prev_trigger = trigger
+    
 
 
 
