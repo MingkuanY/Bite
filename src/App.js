@@ -15,20 +15,20 @@ function App() {
   const [biteData, setBiteData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const apiUrl = 'https://a4d2-192-54-222-148.ngrok-free.app/data';
+  // const apiUrl = 'https://a4d2-192-54-222-148.ngrok-free.app/data';
 
   let displayData;
   let feedback;
   useEffect(() => {
     // Make a GET request to the server's API
-    fetch(apiUrl, {
-      method: 'GET',
-      mode: 'cors'
-    })
+    fetch('./placeholder.json')
       .then(response => response.json())
-      .then(data => {
+      .then(text => {
+        console.log(text);
+        const data = JSON.parse(text);
         setBiteData(data);
         setIsLoading(false);
+        console.log(data);
       })
       .catch((error) => {
         console.error('Error fetching Bite data :', error);
@@ -144,7 +144,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="nutrition">
+        {/* <div className="nutrition">
           <section className="performance-facts">
             <header className="performance-facts__header">
               <h1 className="performance-facts__title">Nutrition Facts</h1>
@@ -353,7 +353,7 @@ function App() {
             </p>
 
           </section>
-        </div>
+        </div> */}
         
 
         <div className="card chatbot">

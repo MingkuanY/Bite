@@ -1,0 +1,1058 @@
+{
+  "agg": {
+    "Food Name": [
+      "Banana Apple Dish",
+      "Beer Yogurt Dish",
+      "Light Ice Cream",
+      "Light Ice Cream",
+      "Milk",
+      "Water",
+      "Red Wine Cola Drink Dish",
+      "Biscuits Cheese Chocolate Chip Cookies Yogurt Dish",
+      "Yogurt Chocolate Chocolate Chip Cookies Dish",
+      "Salty Biscuits",
+      "Milk"
+    ],
+    "Nutritional Info": {
+      "Calcium": {
+        "quantity": 2763.11,
+        "unit": "%"
+      },
+      "Calories": {
+        "percent_daily_value": 145,
+        "quantity": 2904.45,
+        "unit": "kcal"
+      },
+      "Cholesterol": {
+        "percent_daily_value": 14517,
+        "quantity": 290.34,
+        "unit": "mg"
+      },
+      "Dietary Fiber": {
+        "percent_daily_value": 621,
+        "quantity": 12.42,
+        "unit": "g"
+      },
+      "Iron": {
+        "quantity": 9.53,
+        "unit": "%"
+      },
+      "Potassium": {
+        "percent_daily_value": 199367,
+        "quantity": 3987.34,
+        "unit": "mg"
+      },
+      "Protein": {
+        "percent_daily_value": 4354.5,
+        "quantity": 87.09,
+        "unit": "g"
+      },
+      "Saturated Fat": {
+        "percent_daily_value": 234.2,
+        "quantity": 46.84,
+        "unit": "g"
+      },
+      "Sodium": {
+        "percent_daily_value": 105166.5,
+        "quantity": 2103.33,
+        "unit": "mg"
+      },
+      "Sugars": {
+        "percent_daily_value": 13830,
+        "quantity": 276.6,
+        "unit": "g"
+      },
+      "Total Carbs": {
+        "percent_daily_value": 20308,
+        "quantity": 406.16,
+        "unit": "g"
+      },
+      "Total Fat": {
+        "percent_daily_value": 127.13,
+        "quantity": 88.99,
+        "unit": "g"
+      },
+      "Trans Fat": {
+        "percent_daily_value": 69,
+        "quantity": 1.38,
+        "unit": "g"
+      },
+      "Vitamin A": {
+        "quantity": 1115.12,
+        "unit": "%"
+      },
+      "Vitamin C": {
+        "quantity": 29.1,
+        "unit": "%"
+      },
+      "Vitamin D": {
+        "quantity": 6.75,
+        "unit": "%"
+      }
+    },
+    "burned_cal": 0,
+    "chatgpt": "Based on the given data, here are a few suggestions to improve your diet:\n\n1. Reduce Intake of Processed Foods: Your diet seems to include a significant amount of processed foods like biscuits, cheesy snacks, chocolate chip cookies, and light ice cream. These foods are often high in unhealthy fats, sugars, and empty calories. Try to limit their consumption and opt for healthier alternatives.\n\n2. Increase Fruit and Vegetable Intake: While your diet includes fruits like bananas and apples, try to incorporate a wider variety of fruits and vegetables. They are rich in vitamins, minerals, and fiber, which contribute to overall health and can help in weight management.\n\n3. Choose Whole Grains: Instead of opting for sugary snacks like biscuits, consume whole grains like whole wheat bread, oats, or brown rice. These provide more fiber and nutrients, making you feel fuller for longer and promoting digestive health.\n\n4. Decrease Sugar Intake: Your diet contains a considerable amount of sugar, mainly from the added sugars in processed foods. Excess sugar intake can lead to weight gain, diabetes, and other health issues. Try to reduce your consumption of sugary foods and drinks and replace them with healthier options like fresh fruits.\n\n5. Balanced Meals: While the nutritional info of individual meals is missing, aim to create balanced meals that include a variety of food groups, such as lean proteins (e.g., chicken, fish, tofu), whole grains, fruits, vegetables, and healthy fats (e.g., avocado, nuts). This helps ensure you get a good range of nutrients and promotes overall health.\n\n6. Monitor Sodium Intake: The aggregate nutritional info indicates a high sodium content, which may contribute to high blood pressure and other health problems. Be mindful of your sodium intake and try to choose lower-sodium options when possible, such as reducing the use of added salt and consuming fresh foods instead of processed ones.\n\nRemember that these are general suggestions based on the limited information provided. It is always advisable to consult a registered dietitian or healthcare professional for personalized advice and guidance tailored to your specific needs and health goals."
+  },
+  "meals": [
+    {
+      "Food Name": "Suiker",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 0.05,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 0.97,
+          "quantity": 19.35,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 0,
+          "quantity": 0.1,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 0,
+          "quantity": 0.05,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 9.98,
+          "quantity": 4.99,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 1.67,
+          "quantity": 5,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Banana Apple Dish",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 16.82,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 9.98,
+          "quantity": 199.66,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 29.74,
+          "quantity": 7.44,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.53,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 17.63,
+          "quantity": 617.18,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 3.52,
+          "quantity": 1.76,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 0.92,
+          "quantity": 0.18,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 0.13,
+          "quantity": 3,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 66.68,
+          "quantity": 33.34,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 17.36,
+          "quantity": 52.09,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 1,
+          "quantity": 0.7,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 9,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 18.64,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Beer Yogurt Dish",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 242.99,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 11.59,
+          "quantity": 231.83,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 2.5,
+          "quantity": 7.5,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.17,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 11.1,
+          "quantity": 388.62,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 16.4,
+          "quantity": 8.2,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 6.25,
+          "quantity": 1.25,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 4.42,
+          "quantity": 101.74,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 17.6,
+          "quantity": 8.8,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 7.15,
+          "quantity": 21.44,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 2.77,
+          "quantity": 1.94,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 17.5,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 1,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Light Ice Cream",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 241.5,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 13.5,
+          "quantity": 270,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 13.5,
+          "quantity": 40.5,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 1.8,
+          "quantity": 0.45,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.29,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 8.91,
+          "quantity": 312,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 14.34,
+          "quantity": 7.17,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 21.95,
+          "quantity": 4.39,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 4.83,
+          "quantity": 111,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 66.36,
+          "quantity": 33.18,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 14.73,
+          "quantity": 44.19,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 10.35,
+          "quantity": 7.25,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 192,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 1.8,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0.15,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Light Ice Cream",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 483,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 27,
+          "quantity": 540,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 27,
+          "quantity": 81,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 3.6,
+          "quantity": 0.9,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.57,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 17.83,
+          "quantity": 624,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 28.68,
+          "quantity": 14.34,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 43.91,
+          "quantity": 8.78,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 9.65,
+          "quantity": 222,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 132.72,
+          "quantity": 66.36,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 29.46,
+          "quantity": 88.38,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 20.7,
+          "quantity": 14.49,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 384,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 3.6,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0.3,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Milk",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 294,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 6.13,
+          "quantity": 122.5,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 6.53,
+          "quantity": 19.6,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.05,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 9.8,
+          "quantity": 343,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 16.17,
+          "quantity": 8.09,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 15.4,
+          "quantity": 3.08,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 5.01,
+          "quantity": 115.15,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 24.79,
+          "quantity": 12.4,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 3.92,
+          "quantity": 11.76,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 6.93,
+          "quantity": 4.85,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 10.41,
+          "quantity": 0.21,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 134.75,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0.49,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 2.94,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Water",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 15,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 0.87,
+          "quantity": 20,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Red Wine Cola Drink Dish",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 11.7,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 12.02,
+          "quantity": 240.4,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.53,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 4.16,
+          "quantity": 145.5,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 0.14,
+          "quantity": 0.07,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 0.66,
+          "quantity": 15.1,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 74.8,
+          "quantity": 37.4,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 13.65,
+          "quantity": 40.94,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 1.32,
+          "quantity": 0.93,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Biscuits Cheese Chocolate Chip Cookies Yogurt Dish",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 542.05,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 24.44,
+          "quantity": 488.75,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 12.8,
+          "quantity": 38.4,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 4.8,
+          "quantity": 1.2,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 2.98,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 11.86,
+          "quantity": 415,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 35.51,
+          "quantity": 17.75,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 55.34,
+          "quantity": 11.07,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 26.47,
+          "quantity": 608.7,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 39.37,
+          "quantity": 19.69,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 15.72,
+          "quantity": 47.17,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 36.95,
+          "quantity": 25.87,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 24.02,
+          "quantity": 0.48,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 116.5,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 1.08,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0.18,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Yogurt Chocolate Chocolate Chip Cookies Dish",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 520.5,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 23.28,
+          "quantity": 465.6,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 7.3,
+          "quantity": 21.9,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 6.48,
+          "quantity": 1.62,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 2.58,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 21.37,
+          "quantity": 747.9,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 33.9,
+          "quantity": 16.95,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 52.4,
+          "quantity": 10.48,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 12.7,
+          "quantity": 292,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 85.84,
+          "quantity": 42.92,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 18.34,
+          "quantity": 55.03,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 28.84,
+          "quantity": 20.19,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 10.26,
+          "quantity": 0.21,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 52.7,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 2,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Salty Biscuits",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 101.55,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 11.16,
+          "quantity": 223.21,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 20.61,
+          "quantity": 61.84,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 3.25,
+          "quantity": 0.81,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 1.78,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 1.46,
+          "quantity": 51.14,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 9.35,
+          "quantity": 4.67,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 22.66,
+          "quantity": 4.53,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 21.72,
+          "quantity": 499.49,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 20.22,
+          "quantity": 10.11,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 11.13,
+          "quantity": 33.4,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 11.32,
+          "quantity": 7.92,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 13.34,
+          "quantity": 0.27,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 73.92,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 0.24,
+          "unit": "%"
+        }
+      }
+    },
+    {
+      "Food Name": "Milk",
+      "Nutritional Info": {
+        "Calcium": {
+          "quantity": 294,
+          "unit": "%"
+        },
+        "Calories": {
+          "percent_daily_value": 6.13,
+          "quantity": 122.5,
+          "unit": "kcal"
+        },
+        "Cholesterol": {
+          "percent_daily_value": 6.53,
+          "quantity": 19.6,
+          "unit": "mg"
+        },
+        "Dietary Fiber": {
+          "percent_daily_value": 0,
+          "quantity": 0,
+          "unit": "g"
+        },
+        "Iron": {
+          "quantity": 0.05,
+          "unit": "%"
+        },
+        "Potassium": {
+          "percent_daily_value": 9.8,
+          "quantity": 343,
+          "unit": "mg"
+        },
+        "Protein": {
+          "percent_daily_value": 16.17,
+          "quantity": 8.09,
+          "unit": "g"
+        },
+        "Saturated Fat": {
+          "percent_daily_value": 15.4,
+          "quantity": 3.08,
+          "unit": "g"
+        },
+        "Sodium": {
+          "percent_daily_value": 5.01,
+          "quantity": 115.15,
+          "unit": "mg"
+        },
+        "Sugars": {
+          "percent_daily_value": 24.79,
+          "quantity": 12.4,
+          "unit": "g"
+        },
+        "Total Carbs": {
+          "percent_daily_value": 3.92,
+          "quantity": 11.76,
+          "unit": "g"
+        },
+        "Total Fat": {
+          "percent_daily_value": 6.93,
+          "quantity": 4.85,
+          "unit": "g"
+        },
+        "Trans Fat": {
+          "percent_daily_value": 10.41,
+          "quantity": 0.21,
+          "unit": "g"
+        },
+        "Vitamin A": {
+          "quantity": 134.75,
+          "unit": "%"
+        },
+        "Vitamin C": {
+          "quantity": 0.49,
+          "unit": "%"
+        },
+        "Vitamin D": {
+          "quantity": 2.94,
+          "unit": "%"
+        }
+      }
+    }
+  ]
+}
