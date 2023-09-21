@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMugSaucer, faBowlFood, faUtensils, faUser, faCookieBite } from '@fortawesome/free-solid-svg-icons'
 import './styles/App.css';
+import data from './placeholder.json'
 
 function App() {
 
@@ -12,29 +13,27 @@ function App() {
 
   /* fetch data */
 
-  const [biteData, setBiteData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  // const [biteData, setBiteData] = useState({});
+  // const [isLoading, setIsLoading] = useState(true);
 
   // const apiUrl = 'https://a4d2-192-54-222-148.ngrok-free.app/data';
 
-  let displayData;
-  let feedback;
-  useEffect(() => {
-    // Make a GET request to the server's API
-    fetch('./placeholder.json')
-      .then(response => response.json())
-      .then(text => {
-        console.log(text);
-        const data = JSON.parse(text);
-        setBiteData(data);
-        setIsLoading(false);
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching Bite data :', error);
-        setIsLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Make a GET request to the server's API
+  //   fetch(apiUrl, {
+  //     method: 'GET',
+  //     mode: 'cors'
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setBiteData(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching Bite data :', error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
 
   return (
@@ -84,64 +83,58 @@ function App() {
           </div>
         </ul>
       </div>
-      <main>
-        <div className="card dashboard-container">
-          <div className="dashboard">
-            <div className="dashboard-top">
-              <h1>Your Meals</h1>
-              All your nutrition. In one place.
-            </div>
-            <div className="dashboard-catalog">
-              <span className="date">Date</span>
-              <span className="time">#</span>
-              <span className="name">Meal</span>
-              <span className="calorie-count">Calories</span>
-              <span className="meal">Type of Meal</span>
-            </div>
-            <ul className="food-list">
-              <li>
-                <span className="date">Today</span>
-                <span className="time">1</span>
-                <span className="name">Willage</span>
-                <span className="calorie-count">553kcal</span>
-                <span className="meal"><FontAwesomeIcon icon={faUtensils} /></span>
-              </li>
-              <li>
-                <span className="date">Today</span>
-                <span className="time">2</span>
-                <span className="name">Panda Express</span>
-                <span className="calorie-count">950kcal</span>
-                <span className="meal"><FontAwesomeIcon icon={faBowlFood} /></span>
-              </li>
-              <li>
-                <span className="date">Today</span>
-                <span className="time">3</span>
-                <span className="name">Ramen</span>
-                <span className="calorie-count">730kcal</span>
-                <span className="meal"><FontAwesomeIcon icon={faMugSaucer} /></span>
-              </li>
-              {
-                biteData && biteData.meals ? (
-                    biteData.meals.map((meal, index) => (
-                    <li key={index}>
-                      <span className="date">Today</span>
-                      <span className="time">{index + 4}</span>
-                      <span className="meal">{meal["Food Name"]}</span>
-                      <span className="calorie-count">{meal["Nutritional Info"]["Calories"]["quantity"] + meal["Nutritional Info"]["Calories"]["unit"]}</span>
-                      <span className="meal"><FontAwesomeIcon icon={faUtensils} /></span>
-                    </li>
-                  ))
-                ) : (
-                  <p>Loading...</p>
-                )
-              }
-            </ul>
-            {/* List of everything you've eaten */
-            /* Display calories, macronutrients, nutrients, vitamin, protein, carbs, etc. for each food */}
-            <div className="summary-box">
-              {/* Display the sum of all calories, proteins, carbs, macronutrients & vitamin */
-              /* Color code based on data quality */}
-            </div>
+      <div className="main">
+        <div className="card dashboard">
+          <div className="dashboard-top">
+            <h1>Your Meals</h1>
+            All your nutrition. In one place.
+          </div>
+          <div className="dashboard-catalog">
+            <span className="date">Date</span>
+            <span className="time">#</span>
+            <span className="name">Meal</span>
+            <span className="calorie-count">Calories</span>
+            <span className="meal">Type of Meal</span>
+          </div>
+          <ul className="food-list">
+            <li>
+              <span className="date">Today</span>
+              <span className="time">1</span>
+              <span className="name">Willage</span>
+              <span className="calorie-count">553kcal</span>
+              <span className="meal"><FontAwesomeIcon icon={faUtensils} /></span>
+            </li>
+            <li>
+              <span className="date">Today</span>
+              <span className="time">2</span>
+              <span className="name">Panda Express</span>
+              <span className="calorie-count">950kcal</span>
+              <span className="meal"><FontAwesomeIcon icon={faBowlFood} /></span>
+            </li>
+            <li>
+              <span className="date">Today</span>
+              <span className="time">3</span>
+              <span className="name">Ramen</span>
+              <span className="calorie-count">730kcal</span>
+              <span className="meal"><FontAwesomeIcon icon={faMugSaucer} /></span>
+            </li>
+            {
+              data.meals.map((meal, index) => (
+                <li key={index}>
+                  <span className="date">Today</span>
+                  <span className="time">{index + 4}</span>
+                  <span className="meal">{meal["Food Name"]}</span>
+                  <span className="calorie-count">{meal["Nutritional Info"]["Calories"]["quantity"] + meal["Nutritional Info"]["Calories"]["unit"]}</span>
+                  <span className="meal"><FontAwesomeIcon icon={faUtensils} /></span>
+                </li>
+              ))
+            }
+          </ul>
+          {/* List of everything you've eaten */
+          /* Display calories, macronutrients, nutrients, vitamin, protein, carbs, etc. for each food */}
+          <div className="summary-box">
+            {/* Display the sum of all calories, proteins, carbs, macronutrients & vitamin */
+            /* Color code based on data quality */}
           </div>
         </div>
         {/* <div className="nutrition">
@@ -360,16 +353,12 @@ function App() {
           <h1>Feedback</h1>
           Today's personal nutrition feedback.
           {
-            isLoading ? (
-              <p className="chatbot-text">Loading...</p>
-            ) : (
-              <p className="chatbot-text">{biteData.agg?.chatgpt}</p>
-            )
+            <p className="chatbot-text">{data.agg.chatgpt}</p>
           }
           {/* Provide dietary advice for the next few days */
           /* Interact with user's data */}
         </div>
-      </main>
+      </div>
     </div>
   );
 }
