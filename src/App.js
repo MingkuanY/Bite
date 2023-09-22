@@ -36,6 +36,13 @@ function App() {
   // }, []);
 
 
+  const [nutritionOpen, setNutritionOpen] = useState(false);
+
+  const toggleNutrition = () => {
+    setNutritionOpen(!nutritionOpen);
+  };
+
+
   return (
     <div className="App">
       <div className="navbar">
@@ -85,33 +92,245 @@ function App() {
       </div>
       <div className="main">
         <div className="card dashboard">
+          <div className={`nutrition ${nutritionOpen ? `nutrition-active` : ''}`}>
+            <section className="performance-facts">
+              <header className="performance-facts__header">
+                <h1 className="performance-facts__title">Nutrition Facts</h1>
+                <div>Serving Size 1/2 cup (about 82g)
+                  <p>Serving Per Container 8</p>
+                </div>
+              </header>
+              <table className="performance-facts__table">
+                <thead>
+                  <tr>
+                    <th colSpan="3" className="small-info">
+                      Amount Per Serving
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colSpan="2">
+                      <b>Calories</b>
+                      200
+                    </th>
+                    <td>
+                      Calories from Fat
+                      130
+                    </td>
+                  </tr>
+                  <tr className="thick-row">
+                    <td colSpan="3" className="small-info">
+                      <b>% Daily Value*</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">
+                      <b>Total Fat</b>
+                      14g
+                    </th>
+                    <td>
+                      <b>22%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell">
+                    </td>
+                    <th>
+                      Saturated Fat
+                      9g
+                    </th>
+                    <td>
+                      <b>22%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell">
+                    </td>
+                    <th>
+                      Trans Fat
+                      0g
+                    </th>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">
+                      <b>Cholesterol</b>
+                      55mg
+                    </th>
+                    <td>
+                      <b>18%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">
+                      <b>Sodium</b>
+                      40mg
+                    </th>
+                    <td>
+                      <b>2%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">
+                      <b>Total Carbohydrate</b>
+                      17g
+                    </th>
+                    <td>
+                      <b>6%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell">
+                    </td>
+                    <th>
+                      Dietary Fiber
+                      1g
+                    </th>
+                    <td>
+                      <b>4%</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell">
+                    </td>
+                    <th>
+                      Sugars
+                      14g
+                    </th>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr className="thick-end">
+                    <th colSpan="2">
+                      <b>Protein</b>
+                      3g
+                    </th>
+                    <td>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table className="performance-facts__table--grid">
+                <tbody>
+                  <tr>
+                    <td colSpan="2">
+                      Vitamin A
+                      10%
+                    </td>
+                    <td>
+                      Vitamin C
+                      0%
+                    </td>
+                  </tr>
+                  <tr className="thin-end">
+                    <td colSpan="2">
+                      Calcium
+                      10%
+                    </td>
+                    <td>
+                      Iron
+                      6%
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p className="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
+
+              <table className="performance-facts__table--small small-info">
+                <thead>
+                  <tr>
+                    <td colSpan="2"></td>
+                    <th>Calories:</th>
+                    <th>2,000</th>
+                    <th>2,500</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th colSpan="2">Total Fat</th>
+                    <td>Less than</td>
+                    <td>65g</td>
+                    <td>80g</td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell"></td>
+                    <th>Saturated Fat</th>
+                    <td>Less than</td>
+                    <td>20g</td>
+                    <td>25g</td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">Cholesterol</th>
+                    <td>Less than</td>
+                    <td>300mg</td>
+                    <td>300 mg</td>
+                  </tr>
+                  <tr>
+                    <th colSpan="2">Sodium</th>
+                    <td>Less than</td>
+                    <td>2,400mg</td>
+                    <td>2,400mg</td>
+                  </tr>
+                  <tr>
+                    <th colSpan="3">Total Carbohydrate</th>
+                    <td>300g</td>
+                    <td>375g</td>
+                  </tr>
+                  <tr>
+                    <td className="blank-cell"></td>
+                    <th colSpan="2">Dietary Fiber</th>
+                    <td>25g</td>
+                    <td>30g</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p className="small-info">
+                Calories per gram:
+              </p>
+              <p className="small-info text-center">
+                Fat 9
+                &bull;
+                Carbohydrate 4
+                &bull;
+                Protein 4
+              </p>
+
+            </section>
+          </div>
           <div className="dashboard-top">
             <h1>Your Meals</h1>
             All your nutrition. In one place.
           </div>
-          <div className="dashboard-catalog">
-            <span className="date">Date</span>
-            <span className="time">#</span>
-            <span className="name">Meal</span>
-            <span className="calorie-count">Calories</span>
-            <span className="meal">Type of Meal</span>
-          </div>
-          <ul className="food-list">
+          <div className={`dashboard-catalog ${nutritionOpen ? `food-list-active` : ''}`}>
             <li>
+              <span className="date">Date</span>
+              <span className="time">#</span>
+              <span className="name">Meal</span>
+              <span className="calorie-count">Calories</span>
+              <span className="meal">Type of Meal</span>
+            </li>
+          </div>
+          <ul className={`food-list ${nutritionOpen ? `food-list-active` : ''}`}>
+            <li onClick={toggleNutrition}>
               <span className="date">Today</span>
               <span className="time">1</span>
               <span className="name">Willage</span>
               <span className="calorie-count">553kcal</span>
               <span className="meal"><FontAwesomeIcon icon={faUtensils} /></span>
             </li>
-            <li>
+            <li onClick={toggleNutrition}>
               <span className="date">Today</span>
               <span className="time">2</span>
               <span className="name">Panda Express</span>
               <span className="calorie-count">950kcal</span>
               <span className="meal"><FontAwesomeIcon icon={faBowlFood} /></span>
             </li>
-            <li>
+            <li onClick={toggleNutrition}>
               <span className="date">Today</span>
               <span className="time">3</span>
               <span className="name">Ramen</span>
@@ -120,7 +339,7 @@ function App() {
             </li>
             {
               data.meals.map((meal, index) => (
-                <li key={index}>
+                <li key={index} onClick={toggleNutrition}>
                   <span className="date">Today</span>
                   <span className="time">{index + 4}</span>
                   <span className="meal">{meal["Food Name"]}</span>
@@ -132,221 +351,7 @@ function App() {
           </ul>
           {/* List of everything you've eaten */
           /* Display calories, macronutrients, nutrients, vitamin, protein, carbs, etc. for each food */}
-          <div className="summary-box">
-            {/* Display the sum of all calories, proteins, carbs, macronutrients & vitamin */
-            /* Color code based on data quality */}
-          </div>
         </div>
-        {/* <div className="nutrition">
-          <section className="performance-facts">
-            <header className="performance-facts__header">
-              <h1 className="performance-facts__title">Nutrition Facts</h1>
-              <div>Serving Size 1/2 cup (about 82g)
-                <p>Serving Per Container 8</p>
-              </div>
-            </header>
-            <table className="performance-facts__table">
-              <thead>
-                <tr>
-                  <th colSpan="3" className="small-info">
-                    Amount Per Serving
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th colSpan="2">
-                    <b>Calories</b>
-                    200
-                  </th>
-                  <td>
-                    Calories from Fat
-                    130
-                  </td>
-                </tr>
-                <tr className="thick-row">
-                  <td colSpan="3" className="small-info">
-                    <b>% Daily Value*</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colSpan="2">
-                    <b>Total Fat</b>
-                    14g
-                  </th>
-                  <td>
-                    <b>22%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="blank-cell">
-                  </td>
-                  <th>
-                    Saturated Fat
-                    9g
-                  </th>
-                  <td>
-                    <b>22%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="blank-cell">
-                  </td>
-                  <th>
-                    Trans Fat
-                    0g
-                  </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th colSpan="2">
-                    <b>Cholesterol</b>
-                    55mg
-                  </th>
-                  <td>
-                    <b>18%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colSpan="2">
-                    <b>Sodium</b>
-                    40mg
-                  </th>
-                  <td>
-                    <b>2%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <th colSpan="2">
-                    <b>Total Carbohydrate</b>
-                    17g
-                  </th>
-                  <td>
-                    <b>6%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="blank-cell">
-                  </td>
-                  <th>
-                    Dietary Fiber
-                    1g
-                  </th>
-                  <td>
-                    <b>4%</b>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="blank-cell">
-                  </td>
-                  <th>
-                    Sugars
-                    14g
-                  </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr className="thick-end">
-                  <th colSpan="2">
-                    <b>Protein</b>
-                    3g
-                  </th>
-                  <td>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <table className="performance-facts__table--grid">
-              <tbody>
-                <tr>
-                  <td colSpan="2">
-                    Vitamin A
-                    10%
-                  </td>
-                  <td>
-                    Vitamin C
-                    0%
-                  </td>
-                </tr>
-                <tr className="thin-end">
-                  <td colSpan="2">
-                    Calcium
-                    10%
-                  </td>
-                  <td>
-                    Iron
-                    6%
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p className="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
-
-            <table className="performance-facts__table--small small-info">
-              <thead>
-                <tr>
-                  <td colSpan="2"></td>
-                  <th>Calories:</th>
-                  <th>2,000</th>
-                  <th>2,500</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th colSpan="2">Total Fat</th>
-                  <td>Less than</td>
-                  <td>65g</td>
-                  <td>80g</td>
-                </tr>
-                <tr>
-                  <td className="blank-cell"></td>
-                  <th>Saturated Fat</th>
-                  <td>Less than</td>
-                  <td>20g</td>
-                  <td>25g</td>
-                </tr>
-                <tr>
-                  <th colSpan="2">Cholesterol</th>
-                  <td>Less than</td>
-                  <td>300mg</td>
-                  <td>300 mg</td>
-                </tr>
-                <tr>
-                  <th colSpan="2">Sodium</th>
-                  <td>Less than</td>
-                  <td>2,400mg</td>
-                  <td>2,400mg</td>
-                </tr>
-                <tr>
-                  <th colSpan="3">Total Carbohydrate</th>
-                  <td>300g</td>
-                  <td>375g</td>
-                </tr>
-                <tr>
-                  <td className="blank-cell"></td>
-                  <th colSpan="2">Dietary Fiber</th>
-                  <td>25g</td>
-                  <td>30g</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <p className="small-info">
-              Calories per gram:
-            </p>
-            <p className="small-info text-center">
-              Fat 9
-              &bull;
-              Carbohydrate 4
-              &bull;
-              Protein 4
-            </p>
-
-          </section>
-        </div> */}
         
 
         <div className="card chatbot">

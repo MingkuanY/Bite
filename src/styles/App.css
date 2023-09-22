@@ -14,12 +14,12 @@
   --quaternary: rgb(43, 77, 161);
   --quinary: rgb(124, 62, 211);
   --sextary: rgb(67, 52, 142);
+
+  --dashboard-width: 100%;
 }
 
 .App {
-  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    sans-serif;
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', sans-serif;
   background-color: rgba(var(--primary-color), 1);
 }
 
@@ -48,25 +48,16 @@ body {
 /* dashboard styles */
 
 .dashboard {
-  flex: 3;
-  min-width: 500px;
-  overflow: hidden;
+  width: var(--dashboard-width);
+  height: 82vh;
   background-color: rgba(var(--quaternary-color), 1);
   margin: 150px 20px 0;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  height: 100vh;
-  padding: 10px 0 30px;
-  width: 100%;
-}
-
-.nutrition {
-  /* position: absolute; */
-  /* right: 0;
-  top: 0;
-  bottom: 0; */
-  margin: 150px 20px 0;
-  flex: 1;
+  padding: 0 0 30px;
+  position: relative;
+  overflow: hidden;
+  /* border: 1px solid rgba(var(--quaternary-color), 1); */
 }
 
 .dashboard-top {
@@ -74,27 +65,36 @@ body {
 }
 
 .dashboard-catalog {
-  display: flex;
-  margin: 20px auto 0;
-  padding: 0 30px;
+  margin-top: 20px;
   font-weight: bold;
 }
 
-.food-list {
+.food-list, .dashboard-catalog {
   width: 100%;
-  margin: 0 auto;
-  padding: 10px;
   box-sizing: border-box;
   list-style-type: none;
-  flex-grow: 1;
-  overflow-y: auto;
+  transition: .4s;
+  padding: 0 10px;
+}
+
+.food-list {
+  padding: 10px;
+  margin: 0;
+}
+
+.food-list-active {
+  width: calc(var(--dashboard-width) - 310px);
+}
+
+.dashboard-catalog li, .food-list li {
+  display: flex;
+  padding: 0 30px;
 }
 
 .food-list li {
-  display: flex;
   background: rgba(var(--secondary-color), .1);
-  padding: 10px 20px;
   color: rgba(var(--text-color), 1);
+  padding: 10px 30px;
   margin: 5px 0;
   transition: .5s;
 }
@@ -132,6 +132,21 @@ body {
   transform: scale(1.06);
   background: rgba(var(--primary-color), 1);
   color: rgba(var(--quaternary-color), 1);
+  cursor: pointer;
+}
+
+
+
+.nutrition {
+  position: absolute;
+  width: 300px;
+  right: -320px;
+  transition: .4s;
+  padding: 24px 10px;
+}
+
+.nutrition-active {
+  right: 0;
 }
 
 
@@ -142,18 +157,20 @@ body {
 /* summary styles */
 
 .chatbot {
-  flex: 1;
-  padding: 10px 20px 30px;
+  width: 600px;
+  padding: 0 20px 30px;
   margin: 150px 20px;
   background-color: rgb(var(--quinary-color));
   border-radius: 5px;
   white-space: pre-line;
   height: fit-content;
+  border: 1px solid rgba(var(--quinary-color), 1);
 }
 
 .chatbot-text {
   margin-top: 20px;
   font-style: italic;
+  line-height: 26px;
 }
 
 
